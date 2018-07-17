@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Slate test" verbose="5">
+
+    <test name="Manage Rules">
+        <classes>
+            <class name="CreateProjectTest"/>
+        </classes>
+    </test>
+
+</suite>
