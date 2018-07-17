@@ -1,8 +1,12 @@
+package com.slate;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import java.net.MalformedURLException;
@@ -30,5 +34,10 @@ public class BaseTest {
 //        caps.setCapability("autoLaunch","true");
         driver = new AndroidDriver<MobileElement>(new URL(APPIUM_HOST), caps);
         wait = new WebDriverWait(driver, 10);
+    }
+
+    @AfterSuite
+    public void teardown() {
+        driver.quit();
     }
 }

@@ -5,7 +5,7 @@
 
     <test name="Manage Rules">
         <classes>
-            <class name="CreateProjectTest"/>
+            <class name="com.slate.tests.CreateProjectTest"/>
         </classes>
     </test>
 
