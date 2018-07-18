@@ -46,4 +46,16 @@ public class ApiUtils {
         return response;
     }
 
+    public Response reopenTask(String id) {
+    //curl -X POST "https://beta.todoist.com/API/v8/tasks/2734893176/reopen" -H "Authorization: Bearer e0529a0699b5a102c741fc8d2942476efffd4838"
+        Response response = given()
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + API_TOKEN)
+                .post("/tasks/" + id + "/reopen");
+        Assert.assertEquals(response.getStatusCode(), 204);
+        log.info("Tasks: " + response.getBody().print());
+        return response;
+    }
+
+
 }

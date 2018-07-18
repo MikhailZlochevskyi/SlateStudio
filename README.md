@@ -1,4 +1,4 @@
-**Description:**
+**Description**
 
 https://docs.google.com/document/d/1CoPMJ-vTboUOMPmETUhw1S61tIXuBmNLYwiHBK5109g
 
@@ -16,11 +16,10 @@ Used next capabilities:
  }`
 
 Make sure you have installed Maven, Java(8+), Android SDK(26).
-And you have up Android virtual device and run Appium server on:
-`host 127.0.0.1:4723`
+And you have up Android virtual device and run Appium server on host:
+`127.0.0.1:4723`
 
-
-**Execution:**
+**Execution**
 
 Please use next command to execute the test suite:
 

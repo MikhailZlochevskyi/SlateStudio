@@ -14,14 +14,13 @@ import static org.awaitility.Awaitility.await;
 
 public class CreateTaskTest extends BaseTest {
 
-    private String taskName = "Slate-" + Math.random() * 1000 + 1;
+    private String taskName = "SlateTask-" + Math.random() * 1000 + 1;
 
     @BeforeClass
     public void createTask() {
         Assert.assertFalse(new ApiUtils().getTasks().path("content").toString().contains(taskName));
 
-//        new LoginPage().loginToApp(wait);//remove further
-        new ProjectsPage().passToProjects(driver, wait).pickProject(driver, wait, "New1");
+        new ProjectsPage().passToProjects(wait).pickProject(driver, wait, "New1");
         new MainPage()
                 .startCreateTask(wait)
                 .fillNameTask(wait, taskName)
@@ -29,10 +28,11 @@ public class CreateTaskTest extends BaseTest {
     }
 
     @Test
-    public void checkProjectPresent() {
-        await().pollInterval(3, TimeUnit.SECONDS).until(() ->
+    public void checkTaskCreation() {
+        await().pollInterval(2, TimeUnit.SECONDS).until(() ->
                 new ApiUtils().getTasks().path("content").toString().contains(taskName)
         );
+        driver.navigate().back();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.slate;
 
+import com.slate.pages.LoginPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -31,6 +32,8 @@ public class BaseTest {
         caps.setCapability("noReset", "false");
         driver = new AndroidDriver<>(new URL(APPIUM_HOST), caps);
         wait = new WebDriverWait(driver, 10);
+
+        new LoginPage().loginToApp(wait);
     }
 
     @AfterSuite
