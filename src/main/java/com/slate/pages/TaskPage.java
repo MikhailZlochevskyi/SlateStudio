@@ -10,8 +10,8 @@ import org.testng.Assert;
 
 import java.util.List;
 
-import static com.slate.pages.PageUtil.getElementById;
-import static com.slate.pages.PageUtil.getElementByXpath;
+import static com.slate.utils.PageUtil.getElementById;
+import static com.slate.utils.PageUtil.getElementByXpath;
 
 public class TaskPage {
 

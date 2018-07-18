@@ -1,8 +1,10 @@
 package com.slate.tests.data;
 
 
+import java.util.Random;
+
 public class TodoistDataProvider {
 
-    public static final String TASK_NAME = "SlateTask-" + Math.random() * 1000 + 1;
-    public static final String PROJECT_NAME = "SlateProject-" +  Math.random() * 1000 + 1;
+    public static final String TASK_NAME = "SlateTask-" + new Random().nextInt(1000) + 1;
+    public static final String PROJECT_NAME = "SlateProject-" +  new Random().nextInt(1000) + 1;
 }

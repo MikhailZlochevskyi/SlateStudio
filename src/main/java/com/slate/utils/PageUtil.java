@@ -1,4 +1,4 @@
-package com.slate.pages;
+package com.slate.utils;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
@@ -17,6 +17,5 @@ public class PageUtil {
     public static WebElement getElementById(AndroidDriver driver, String id) {
         return new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated
                 (By.id(id)));
-
     }
 }

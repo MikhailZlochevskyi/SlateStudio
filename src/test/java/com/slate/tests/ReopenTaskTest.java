@@ -23,7 +23,8 @@ public class ReopenTaskTest extends BaseTest {
 
     @Test
     public void checkTaskReopenViaApi() {
-        new ApiUtils().reopenTask("2735000216");
+        new ApiUtils().reopenTask("2735000216");//todo: get id from response tasks
         new TaskPage().verifyTaskPresent(driver, TASK_NAME);
     }
+
 }

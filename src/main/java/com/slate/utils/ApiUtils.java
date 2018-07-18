@@ -50,7 +50,6 @@ public class ApiUtils {
     }
 
     public Response reopenTask(String id) {
-    //curl -X POST "https://beta.todoist.com/API/v8/tasks/2734893176/reopen" -H "Authorization: Bearer e0529a0699b5a102c741fc8d2942476efffd4838"
         Response response = given()
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Bearer " + API_TOKEN)
@@ -60,10 +59,14 @@ public class ApiUtils {
         return response;
     }
 
-    public void verifyTaskPresent(String taskName){
+    public void verifyTaskPresent(String taskName) {
         await().pollInterval(2, TimeUnit.SECONDS).until(() ->
                 new ApiUtils().getTasks().path("content").toString().contains(taskName)
         );
+    }
+
+    public void verifyTaskIsNotPresent(String taskName) {
+        Assert.assertFalse(new ApiUtils().getTasks().path("content").toString().contains(taskName));
     }
 
 }
