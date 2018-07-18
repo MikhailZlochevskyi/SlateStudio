@@ -3,7 +3,7 @@
 
 <suite name="Slate test" verbose="5">
 
-    <test name="Manage Rules">
+    <test name="Slate test">
         <classes>
             <class name="com.slate.tests.CreateProjectTest"/>
         </classes>

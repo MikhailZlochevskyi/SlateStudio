@@ -1,4 +1,4 @@
-package com.slate;
+package com.slate.utils;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
