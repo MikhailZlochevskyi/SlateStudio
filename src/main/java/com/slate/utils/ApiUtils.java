@@ -2,11 +2,14 @@ package com.slate.utils;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 
 import static com.jayway.restassured.RestAssured.given;
 
 public class ApiUtils {
+
+    final static Logger log = Logger.getLogger(ApiUtils.class);
 
     public static final String API_TOKEN = "e0529a0699b5a102c741fc8d2942476efffd4838";
 
@@ -21,6 +24,7 @@ public class ApiUtils {
                 .queryParam("name", name)
                 .post("/projects");
         Assert.assertEquals(response.getStatusCode(), 200);
+        log.info("Project has been created: " + response.getBody().print());
         return response;
     }
 
