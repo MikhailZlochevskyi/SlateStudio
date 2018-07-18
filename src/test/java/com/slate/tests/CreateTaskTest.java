@@ -8,31 +8,26 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
-import static org.awaitility.Awaitility.await;
+import static com.slate.tests.data.TodoistDataProvider.PROJECT_NAME;
+import static com.slate.tests.data.TodoistDataProvider.TASK_NAME;
 
 public class CreateTaskTest extends BaseTest {
 
-    private String taskName = "SlateTask-" + Math.random() * 1000 + 1;
 
     @BeforeClass
     public void createTask() {
-        Assert.assertFalse(new ApiUtils().getTasks().path("content").toString().contains(taskName));
+        Assert.assertFalse(new ApiUtils().getTasks().path("content").toString().contains(TASK_NAME));
 
-        new ProjectsPage().passToProjects(wait).pickProject(driver, wait, "New1");
+        new ProjectsPage().passToProjects(driver).pickProject(driver, PROJECT_NAME);
         new MainPage()
-                .startCreateTask(wait)
-                .fillNameTask(wait, taskName)
-                .createTask(wait, driver);
+                .startCreateTask(driver)
+                .fillNameTask(driver, TASK_NAME)
+                .createTask(driver);
     }
 
     @Test
     public void checkTaskCreation() {
-        await().pollInterval(2, TimeUnit.SECONDS).until(() ->
-                new ApiUtils().getTasks().path("content").toString().contains(taskName)
-        );
-        driver.navigate().back();
+        new ApiUtils().verifyTaskPresent(TASK_NAME);
     }
 
 }

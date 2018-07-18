@@ -1,8 +1,6 @@
 package com.slate;
 
 import com.slate.pages.LoginPage;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,10 +12,9 @@ import java.net.URL;
 
 public class BaseTest {
 
-    public AppiumDriver<MobileElement> driver;
-    public WebDriverWait wait;
+    private final String APPIUM_HOST = "http://127.0.0.1:4723/wd/hub";
 
-    private static final String APPIUM_HOST = "http://127.0.0.1:4723/wd/hub";
+    public AndroidDriver driver;
 
     @BeforeSuite
     public void setUp() throws MalformedURLException {
@@ -27,17 +24,17 @@ public class BaseTest {
         caps.setCapability("platformName", "Android");
         caps.setCapability("platformVersion", "7.0");
         caps.setCapability("skipUnlock", "true");
-        caps.setCapability("appPackage", "com.todoist");//"com.google.android.apps.nexuslauncher");
-        caps.setCapability("appActivity", "com.todoist.activity.HomeActivity");// "com.google.android.apps.nexuslauncher.NexusLauncherActivity");
+        caps.setCapability("appPackage", "com.todoist");
+        caps.setCapability("appActivity", "com.todoist.activity.HomeActivity");
         caps.setCapability("noReset", "false");
-        driver = new AndroidDriver<>(new URL(APPIUM_HOST), caps);
-        wait = new WebDriverWait(driver, 10);
+        driver = new AndroidDriver(new URL(APPIUM_HOST), caps);
 
-        new LoginPage().loginToApp(wait);
+        new LoginPage().loginToApp(driver);
     }
 
     @AfterSuite
     public void teardown() {
         driver.quit();
     }
+
 }

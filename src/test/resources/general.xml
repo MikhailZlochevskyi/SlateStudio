@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Slate test" verbose="5">
+<suite name="Slate suite" verbose="5">
 
-    <test name="Slate test">
+    <test name="Slate tests">
         <classes>
             <class name="com.slate.tests.CreateProjectTest"/>
             <class name="com.slate.tests.CreateTaskTest"/>
+            <class name="com.slate.tests.ReopenTaskTest"/>
         </classes>
     </test>
 

@@ -1,14 +1,13 @@
 package com.slate.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import io.appium.java_client.android.AndroidDriver;
+
+import static com.slate.pages.PageUtil.getElementById;
 
 public class MainPage {
 
-    public TaskPage startCreateTask(WebDriverWait wait){
-        wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.id("com.todoist:id/fab"))).click();
+    public TaskPage startCreateTask(AndroidDriver driver){
+        getElementById(driver, "com.todoist:id/fab").click();
         return new TaskPage();
     }
 }

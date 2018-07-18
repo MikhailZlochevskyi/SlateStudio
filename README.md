@@ -16,7 +16,7 @@ Used next capabilities:
  }`
 
 Make sure you have installed Maven, Java(8+), Android SDK(26).
-And you have up Android virtual device and run Appium server on host:
+And you have up Android virtual device (with installed Todoist apk) and run Appium server on host:
 `127.0.0.1:4723`
 
 **Execution**
