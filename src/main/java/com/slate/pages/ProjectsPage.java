@@ -24,4 +24,11 @@ public class ProjectsPage {
         driver.navigate().back();
         return this;
     }
+
+    public ProjectsPage pickProject(AppiumDriver driver, WebDriverWait wait, String name) {
+                wait.until(ExpectedConditions.visibilityOfElementLocated
+                        (By.xpath("//android.widget.TextView[@text='" + name + "']"))).click();
+        return this;
+    }
+
 }

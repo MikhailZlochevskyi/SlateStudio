@@ -9,7 +9,7 @@ import static com.jayway.restassured.RestAssured.given;
 
 public class ApiUtils {
 
-    final static Logger log = Logger.getLogger(ApiUtils.class);
+    final Logger log = Logger.getLogger(ApiUtils.class);
 
     public static final String API_TOKEN = "e0529a0699b5a102c741fc8d2942476efffd4838";
 
@@ -28,12 +28,22 @@ public class ApiUtils {
         return response;
     }
 
-    public void deleteProject(String id){
+    public void deleteProject(String id) {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Bearer " + API_TOKEN)
                 .delete("/projects/" + id);
         Assert.assertEquals(response.getStatusCode(), 204);
+    }
+
+    public Response getTasks() {
+        Response response = given()
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + API_TOKEN)
+                .get("/tasks");
+        Assert.assertEquals(response.getStatusCode(), 200);
+        log.info("Tasks: " + response.getBody().print());
+        return response;
     }
 
 }

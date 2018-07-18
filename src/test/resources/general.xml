@@ -6,6 +6,7 @@
     <test name="Slate test">
         <classes>
             <class name="com.slate.tests.CreateProjectTest"/>
+            <class name="com.slate.tests.CreateTaskTest"/>
         </classes>
     </test>
 

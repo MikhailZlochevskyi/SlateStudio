@@ -26,7 +26,7 @@ public class CreateProjectTest extends BaseTest {
     }
 
     @Test
-    public void basicTest() {
+    public void checkProjectPresent() {
         new LoginPage().loginToApp(wait);
         new ProjectsPage()
                 .passToProjects(driver, wait)
