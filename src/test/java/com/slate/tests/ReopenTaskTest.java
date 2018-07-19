@@ -13,7 +13,7 @@ import static com.slate.tests.data.TodoistDataProvider.TASK_NAME;
 public class ReopenTaskTest extends BaseTest {
 
     @BeforeClass
-    public void createTask() {
+    public void resolveTask() {
         new ProjectsPage().passToProjects(driver).pickProject(driver, PROJECT_NAME);
         new TaskPage()
                 .pickTask(driver, TASK_NAME)
