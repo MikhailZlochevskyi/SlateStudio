@@ -2,8 +2,8 @@ package com.slate.utils;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
+import com.slate.config.TestConfig;
 import lombok.extern.log4j.Log4j;
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
@@ -15,7 +15,7 @@ import static org.awaitility.Awaitility.await;
 public class ApiUtils {
 
 
-    public static final String API_TOKEN = "e0529a0699b5a102c741fc8d2942476efffd4838";
+    public static final String API_TOKEN = TestConfig.getUserToken();
 
     public ApiUtils() {
         RestAssured.baseURI = "https://beta.todoist.com/API/v8";
