@@ -23,14 +23,12 @@ public class BaseTest {
 
     @BeforeSuite
     public void setUp(ITestContext testContext) throws MalformedURLException {
-        log.info("Suite <" + testContext.getSuite().getName() + "> started");
-
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus 5 API 24");// ideally move to properties
         caps.setCapability(MobileCapabilityType.UDID, "emulator-5554");
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "7.0");
-        caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "4000");
+        caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "5000");
         caps.setCapability(MobileCapabilityType.APP, getAppPath());
         caps.setCapability("appPackage", "com.todoist");
         caps.setCapability("appActivity", "com.todoist.activity.HomeActivity");
@@ -38,6 +36,7 @@ public class BaseTest {
         caps.setCapability("skipUnlock", "true");
 
         driver = new AndroidDriver<>(new URL(TestConfig.getAppiumServer()), caps);
+        log.info("Suite <" + testContext.getSuite().getName() + "> started");
 
         new LoginPage(driver)
                 .loginToApp();
