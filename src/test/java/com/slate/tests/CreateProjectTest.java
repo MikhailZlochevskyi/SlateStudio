@@ -32,7 +32,7 @@ public class CreateProjectTest extends BaseTest {
     public void cleanUp() {
 //        String projectId = project.path("id").toString(); todo: move clean up to AfterSuite
 //        new ApiUtils().deleteProject(projectId);
-        driver.navigate().back();
+//        driver.navigate().back();
     }
 
 }

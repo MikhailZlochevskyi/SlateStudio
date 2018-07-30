@@ -1,9 +1,9 @@
 package com.slate.tests;
 
 import com.slate.BaseTest;
-import com.slate.pages.MainPage;
 import com.slate.pages.ProjectsPage;
-import com.slate.steps.TasksStep;
+import com.slate.pages.TaskPage;
+import com.slate.steps.TaskVerificationStep;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -15,13 +15,14 @@ public class CreateTaskTest extends BaseTest {
 
     @BeforeClass
     public void createTask() {
-        new TasksStep()
-                .verifyTaskIsNotPresent(TASK_NAME);
+        new TaskVerificationStep()
+                .verifyTaskIsNotPresentOnApi(TASK_NAME);
 
         new ProjectsPage(driver)
-                .passToProjects()
+//                .passToProjects()
                 .pickProject(PROJECT_NAME);
-        new MainPage(driver)
+
+        new TaskPage(driver)
                 .startCreateTask()
                 .fillNameTask(TASK_NAME)
                 .createTask();
@@ -29,12 +30,12 @@ public class CreateTaskTest extends BaseTest {
 
     @Test
     public void checkTaskCreation() {
-        new TasksStep()
-                .verifyTaskPresent(TASK_NAME);
+        new TaskVerificationStep()
+                .verifyTaskPresentOnApi(TASK_NAME);
     }
 
     @AfterClass
     public void cleanUp() {
-        driver.navigate().back();
+//        driver.navigate().back();
     }
 }

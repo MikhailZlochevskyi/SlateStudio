@@ -35,7 +35,7 @@
     <properties>
         <selenium.version>3.12.0</selenium.version>
         <testng.version>6.14.3</testng.version>
-        <appium.version>6.0.0</appium.version>
+        <appium.version>5.0.4</appium.version>
         <restassured.version>2.9.0</restassured.version>
         <json.version>20180130</json.version>
     </properties>
