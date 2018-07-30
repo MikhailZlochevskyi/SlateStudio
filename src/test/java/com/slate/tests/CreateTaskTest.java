@@ -18,13 +18,13 @@ public class CreateTaskTest extends BaseTest {
         new TasksStep()
                 .verifyTaskIsNotPresent(TASK_NAME);
 
-        new ProjectsPage()
-                .passToProjects(driver)
-                .pickProject(driver, PROJECT_NAME);
-        new MainPage()
-                .startCreateTask(driver)
-                .fillNameTask( driver,TASK_NAME)
-                .createTask(driver);
+        new ProjectsPage(driver)
+                .passToProjects()
+                .pickProject(PROJECT_NAME);
+        new MainPage(driver)
+                .startCreateTask()
+                .fillNameTask(TASK_NAME)
+                .createTask();
     }
 
     @Test

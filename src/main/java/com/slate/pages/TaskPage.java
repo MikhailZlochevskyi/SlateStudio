@@ -15,18 +15,24 @@ import static com.slate.utils.PageUtil.getElementByXpath;
 
 public class TaskPage {
 
-    public TaskPage fillNameTask(AndroidDriver driver, String name) {
+    private AndroidDriver driver;
+
+    public TaskPage(AndroidDriver driver){
+        this.driver = driver;
+    }
+
+    public TaskPage fillNameTask(String name) {
         getElementById(driver, "android:id/message").sendKeys(name);
         return this;
     }
 
-    public TaskPage createTask(AndroidDriver driver) {
+    public TaskPage createTask() {
         getElementById(driver, "android:id/button1").click();
         driver.hideKeyboard();
         return this;
     }
 
-    public TaskPage pickTask(AppiumDriver<MobileElement> driver, String taskName) {
+    public TaskPage pickTask(String taskName) {
         new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("com.todoist:id/text")));
 
         List<MobileElement> tasks = driver.findElements(By.id("com.todoist:id/text"));
@@ -37,18 +43,18 @@ public class TaskPage {
         return this;
     }
 
-    public TaskPage resolveTask(AndroidDriver driver) {
+    public TaskPage resolveTask() {
         getElementById(driver, "com.todoist:id/menu_item_complete").click();
         return this;
     }
 
-    public TaskPage verifyTaskPresent(AndroidDriver driver, String taskName) {
+    public TaskPage verifyTaskPresent(String taskName) {
         Assert.assertTrue(getElementByXpath(driver, "//android.widget.TextView[@text='" + taskName + "']").isDisplayed(),
                 "Task " + taskName + " not present!");
         return this;
     }
 
-    public TaskPage verifyTaskDisappear(AppiumDriver driver, String taskName) {
+    public TaskPage verifyTaskDisappear(String taskName) {
         Assert.assertTrue(new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(
                 (By.xpath("//android.widget.TextView[@text='" + taskName + "']")))),
                 "Task " + taskName + " present!");

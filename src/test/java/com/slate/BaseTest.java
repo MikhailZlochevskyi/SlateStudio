@@ -33,9 +33,10 @@ public class BaseTest {
         caps.setCapability("appPackage", "com.todoist");
         caps.setCapability("appActivity", "com.todoist.activity.HomeActivity");
         caps.setCapability("noReset", "false");
-        driver = new AndroidDriver<MobileElement>(new URL(APPIUM_HOST), caps);
+        driver = new AndroidDriver<>(new URL(APPIUM_HOST), caps);
 
-        new LoginPage().loginToApp(driver);
+        new LoginPage(driver)
+                .loginToApp();
     }
 
     @AfterSuite

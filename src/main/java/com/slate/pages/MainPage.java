@@ -6,9 +6,15 @@ import static com.slate.utils.PageUtil.getElementById;
 
 public class MainPage {
 
-    public TaskPage startCreateTask(AndroidDriver driver){
+    private AndroidDriver driver;
+
+    public MainPage(AndroidDriver driver){
+        this.driver = driver;
+    }
+
+    public TaskPage startCreateTask(){
         getElementById(driver, "com.todoist:id/fab").click();
-        return new TaskPage();
+        return new TaskPage(driver);
     }
 
 }

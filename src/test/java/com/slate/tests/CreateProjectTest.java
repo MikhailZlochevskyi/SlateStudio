@@ -23,9 +23,9 @@ public class CreateProjectTest extends BaseTest {
 
     @Test
     public void checkProjectPresent() {
-        new ProjectsPage()
-                .passToProjects(driver)
-                .verifyProjectPresent(driver, PROJECT_NAME);
+        new ProjectsPage(driver)
+                .passToProjects()
+                .verifyProjectPresent(PROJECT_NAME);
     }
 
     @AfterClass
