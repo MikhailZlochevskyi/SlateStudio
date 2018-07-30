@@ -4,6 +4,9 @@ import com.jayway.restassured.response.Response;
 import com.slate.client.ResponseWrapper;
 import com.slate.client.RestClient;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProjectClient extends RestClient {
 
     private static ProjectClient client = new ProjectClient();
@@ -14,7 +17,8 @@ public class ProjectClient extends RestClient {
     }
 
     public ResponseWrapper<Response> createProject(String name) {
-        String body = "{\"name\":" + name + "}";
+        Map body =  new HashMap();
+        body.put("name", name);
         return post(PROJECTS, body, Response.class);
     }
 

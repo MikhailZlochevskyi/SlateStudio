@@ -18,4 +18,9 @@ public class TestConfig {
         User testUser = create(User.class);
         return testUser.userToken();
     }
+
+    public static String getAppiumServer() {
+        Appium appium = create(Appium.class);
+        return appium.appiumServer();
+    }
 }

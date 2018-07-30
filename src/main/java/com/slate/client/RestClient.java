@@ -24,7 +24,7 @@ public abstract class RestClient {
         RestAssured.baseURI = "https://beta.todoist.com/API/v8";
         requestSpecification = new RequestSpecBuilder()
                 .setContentType("application/json")
-                .addHeader("Authorization", TestConfig.getUserToken())
+                .addHeader("Authorization","Bearer " + TestConfig.getUserToken())
                 .log(LogDetail.ALL)
                 .build();
     }
@@ -45,8 +45,8 @@ public abstract class RestClient {
         return new ResponseWrapper<>(response, responseClass);
     }
 
-    public <T, F> ResponseWrapper<F> post(String path, T payload, Class<F> responseClass) {
-        Response response = given().spec(requestSpecification).body(payload).post(path);
+    public <T, F> ResponseWrapper<F> post(String path, Map payload, Class<F> responseClass) {
+        Response response = given().spec(requestSpecification).queryParams(payload).post(path);
         logResponse(response);
         return new ResponseWrapper<>(response, responseClass);
     }
