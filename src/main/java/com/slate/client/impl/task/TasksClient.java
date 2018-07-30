@@ -3,14 +3,13 @@ package com.slate.client.impl.task;
 import com.jayway.restassured.response.Response;
 import com.slate.client.ResponseWrapper;
 import com.slate.client.RestClient;
-import com.slate.client.impl.project.ProjectClient;
 
 public class TasksClient extends RestClient {
 
-    private static ProjectClient client = new ProjectClient();
+    private static TasksClient client = new TasksClient();
     private static String TASKS = "/tasks";
 
-    public static ProjectClient getTasksClient() {
+    public static TasksClient getTasksClient() {
         return client;
     }
 

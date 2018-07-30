@@ -3,7 +3,7 @@ package com.slate.tests;
 import com.slate.BaseTest;
 import com.slate.pages.MainPage;
 import com.slate.pages.ProjectsPage;
-import com.slate.utils.ApiUtils;
+import com.slate.steps.TasksStep;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -15,7 +15,7 @@ public class CreateTaskTest extends BaseTest {
 
     @BeforeClass
     public void createTask() {
-        new ApiUtils()
+        new TasksStep()
                 .verifyTaskIsNotPresent(TASK_NAME);
 
         new ProjectsPage()
@@ -29,7 +29,7 @@ public class CreateTaskTest extends BaseTest {
 
     @Test
     public void checkTaskCreation() {
-        new ApiUtils()
+        new TasksStep()
                 .verifyTaskPresent(TASK_NAME);
     }
 
