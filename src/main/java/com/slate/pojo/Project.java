@@ -1,4 +1,4 @@
-package com.slate.pojo.project;
+package com.slate.pojo;
 
 import com.google.gson.annotations.SerializedName;
 

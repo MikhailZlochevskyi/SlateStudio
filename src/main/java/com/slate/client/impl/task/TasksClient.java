@@ -18,7 +18,7 @@ public class TasksClient extends RestClient {
         return get(TASKS, Task.class);
     }
 
-    public ResponseWrapper<Task> getTaskById(int id) {
+    public ResponseWrapper<Task> getTaskById(long id) {
         return get(TASKS + "/" + id, Task.class);
     }
 

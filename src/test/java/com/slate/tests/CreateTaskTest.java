@@ -19,7 +19,6 @@ public class CreateTaskTest extends BaseTest {
                 .verifyTaskIsNotPresentOnApi(TASK_NAME);
 
         new ProjectsPage(driver)
-//                .passToProjects()
                 .pickProject(PROJECT_NAME);
 
         new TaskPage(driver)
@@ -34,8 +33,4 @@ public class CreateTaskTest extends BaseTest {
                 .verifyTaskPresentOnApi(TASK_NAME);
     }
 
-    @AfterClass
-    public void cleanUp() {
-//        driver.navigate().back();
-    }
 }

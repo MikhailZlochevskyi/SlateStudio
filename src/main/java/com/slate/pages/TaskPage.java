@@ -68,13 +68,13 @@ public class TaskPage extends BasePage {
     }
 
     public static void verifyTaskPresent(String taskName) {
-        Assert.assertTrue(new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(
+        Assert.assertTrue(new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(
                 (By.xpath("//android.widget.TextView[@text='" + taskName + "']")))).isDisplayed(),
                 "Task " + taskName + " present!");
     }
 
     public static void verifyTaskDisappear(String taskName) {
-        Assert.assertTrue(new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(
+        Assert.assertTrue(new WebDriverWait(driver, 20).until(ExpectedConditions.invisibilityOfElementLocated(
                 (By.xpath("//android.widget.TextView[@text='" + taskName + "']")))),
                 "Task " + taskName + " present!");
     }

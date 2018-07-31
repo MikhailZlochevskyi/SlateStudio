@@ -12,11 +12,9 @@ import static com.slate.tests.data.TodoistDataProvider.PROJECT_NAME;
 
 public class CreateProjectTest extends BaseTest {
 
-    private Response project;
-
     @BeforeClass
     public void createFolder() {
-        project = getProjectClient()
+        getProjectClient()
                 .createProject(PROJECT_NAME)
                 .getResponse();
     }
