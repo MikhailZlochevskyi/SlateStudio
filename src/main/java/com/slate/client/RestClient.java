@@ -5,7 +5,7 @@ import com.jayway.restassured.builder.RequestSpecBuilder;
 import com.jayway.restassured.filter.log.LogDetail;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
-import com.slate.config.TestConfig;
+import com.slate.config.impl.TestConfig;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
@@ -39,12 +39,6 @@ public abstract class RestClient {
         return new ResponseWrapper<>(response, responseClass);
     }
 
-    public <F> ResponseWrapper<F> get(String path, Map<String, String> queryParams, Class<F> responseClass) {
-        Response response = given().spec(requestSpecification).queryParams(queryParams).get(path);
-        logResponse(response);
-        return new ResponseWrapper<>(response, responseClass);
-    }
-
     public <T, F> ResponseWrapper<F> post(String path, Map payload, Class<F> responseClass) {
         Response response = given().spec(requestSpecification).queryParams(payload).post(path);
         logResponse(response);
@@ -53,18 +47,6 @@ public abstract class RestClient {
 
     public <T, F> ResponseWrapper<F> post(String path, Class<F> responseClass) {
         Response response = given().spec(requestSpecification).post(path);
-        logResponse(response);
-        return new ResponseWrapper<>(response, responseClass);
-    }
-
-    public <T, F> ResponseWrapper<F> patch(String path, T payload, Class<F> responseClass) {
-        Response response = given().body(payload).patch(path);
-        logResponse(response);
-        return new ResponseWrapper<>(response, responseClass);
-    }
-
-    public <T, F> ResponseWrapper<F> put(String path, T payload, Class<F> responseClass) {
-        Response response = given().spec(requestSpecification).body(payload).put(path);
         logResponse(response);
         return new ResponseWrapper<>(response, responseClass);
     }

@@ -45,7 +45,6 @@ public class TaskPage extends BasePage {
 
     public TaskPage createTask() {
         createTaskBtn.click();
-        driver.hideKeyboard();
         return this;
     }
 
@@ -67,10 +66,9 @@ public class TaskPage extends BasePage {
         return this;
     }
 
-    public static void verifyTaskPresent(String taskName) {
-        Assert.assertTrue(new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(
-                (By.xpath("//android.widget.TextView[@text='" + taskName + "']")))).isDisplayed(),
-                "Task " + taskName + " present!");
+    public static boolean verifyTaskPresent(String taskName) {
+       return new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(
+                (By.xpath("//android.widget.TextView[@text='" + taskName + "']")))).isDisplayed();
     }
 
     public static void verifyTaskDisappear(String taskName) {

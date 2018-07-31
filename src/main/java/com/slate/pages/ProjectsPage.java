@@ -1,7 +1,9 @@
 package com.slate.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,17 +11,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 
-public class ProjectsPage {
+public class ProjectsPage extends BasePage{
 
-    private AndroidDriver driver;
+    @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc=\"Change the current view\"]")
+    private MobileElement openMenu;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Projects']")
+    private MobileElement projectSection;
 
     public ProjectsPage(AndroidDriver driver){
-        this.driver = driver;
+        super(driver);
     }
 
-    public ProjectsPage passToProjects() {
-        getElementByXpath(driver, "//android.widget.ImageButton[@content-desc=\"Change the current view\"]").click();
-        getElementByXpath(driver, "//android.widget.TextView[@text='Projects']").click();
+    public ProjectsPage clickToProjects() {
+        projectSection.click();
         return this;
     }
 

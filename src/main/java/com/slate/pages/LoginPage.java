@@ -1,6 +1,6 @@
 package com.slate.pages;
 
-import com.slate.config.TestConfig;
+import com.slate.config.impl.TestConfig;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;

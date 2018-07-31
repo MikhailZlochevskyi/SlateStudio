@@ -1,6 +1,6 @@
 package com.slate;
 
-import com.slate.config.TestConfig;
+import com.slate.config.impl.TestConfig;
 import com.slate.pages.LoginPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
