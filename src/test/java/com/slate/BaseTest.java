@@ -2,27 +2,37 @@ package com.slate;
 
 import com.slate.config.TestConfig;
 import com.slate.pages.LoginPage;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
-import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
-import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 @Log4j
 public class BaseTest {
 
-    public static AndroidDriver<MobileElement> driver;
+    public static AndroidDriver driver;
 
     @BeforeSuite
     public void setUp(ITestContext testContext) throws MalformedURLException {
+        driver = new AndroidDriver(getAppiumServerUrl(), setCapabilities());
+
+        new LoginPage(driver)
+                .loginToApp();
+    }
+
+    @AfterSuite
+    public void tearDown(ITestContext testContext) {
+        driver.quit();
+    }
+
+    private DesiredCapabilities setCapabilities() {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus 5 API 24");// ideally move to properties
         caps.setCapability(MobileCapabilityType.UDID, "emulator-5554");
@@ -34,44 +44,14 @@ public class BaseTest {
         caps.setCapability("appActivity", "com.todoist.activity.HomeActivity");
         caps.setCapability("noReset", "false");
         caps.setCapability("skipUnlock", "true");
-
-        driver = new AndroidDriver<>(new URL(TestConfig.getAppiumServer()), caps);
-        log.info("Suite <" + testContext.getSuite().getName() + "> started");
-
-        new LoginPage(driver)
-                .loginToApp();
+        return caps;
     }
 
-
-    @AfterSuite
-    public void tearDown(ITestContext testContext) {
-        driver.quit();
-        log.info("Suite <" + testContext.getSuite().getName() + "> ended");
-
+    private URL getAppiumServerUrl() throws MalformedURLException {
+        return new URL(TestConfig.getAppiumServer());
     }
 
-    @BeforeTest(alwaysRun = true)
-    public void beforeTest(ITestContext testContext) {
-        log.info("Test <<" + testContext.getCurrentXmlTest().getName() + ">> started");
-    }
-
-    @AfterTest(alwaysRun = true)
-    public void afterTest(ITestContext testContext) {
-        log.info("Test <<" + testContext.getCurrentXmlTest().getName() + ">> ended");
-    }
-
-    @BeforeMethod(alwaysRun = true)
-    public void beforeMethod(Method method) {
-        log.info("===================================================================================================");
-        log.info("Test method <<<" + method.getName() + ">>> started");
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void afterMethod(ITestResult testResult, Method method) {
-        log.info("Test method <<<" + method.getName() + ">>> ended");
-    }
-
-    private String getAppPath(){
+    private String getAppPath() {
         ClassLoader classLoader = getClass().getClassLoader();
         return new File(classLoader.getResource("Todoist_v12.8_apkpure.com.apk").getFile()).getAbsolutePath();
     }
