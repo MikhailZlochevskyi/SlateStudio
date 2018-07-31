@@ -3,6 +3,7 @@ package com.slate.client.impl.task;
 import com.jayway.restassured.response.Response;
 import com.slate.client.ResponseWrapper;
 import com.slate.client.RestClient;
+import com.slate.pojo.task.Task;
 
 public class TasksClient extends RestClient {
 
@@ -13,12 +14,18 @@ public class TasksClient extends RestClient {
         return client;
     }
 
-    public ResponseWrapper<Response> getTasks() {
-        return get(TASKS, Response.class);
+    public ResponseWrapper<Task> getTasks() {
+        return get(TASKS, Task.class);
     }
 
-    public ResponseWrapper<Response> reopenTask(String id) {
+    public ResponseWrapper<Task> getTaskById(int id) {
+        return get(TASKS + "/" + id, Task.class);
+    }
+
+    public ResponseWrapper<Response> reopenTask(long id) {
         return post(TASKS + "/" + id + "/reopen", Response.class);
     }
+
+
 
 }
