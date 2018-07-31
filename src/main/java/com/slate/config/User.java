@@ -2,7 +2,7 @@ package com.slate.config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources({"classpath:user.properties"})
+@Config.Sources({"classpath:properties/user.properties"})
 public interface User extends Config {
 
     @Key("user.login")

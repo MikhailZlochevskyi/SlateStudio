@@ -1,0 +1,126 @@
+{
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "items": {
+    "$id": "http://example.com/example.json/items",
+    "type": "object",
+    "properties": {
+      "id": {
+        "$id": "http://example.com/example.json/items/properties/id",
+        "type": "integer",
+        "title": "The Id Schema ",
+        "default": 0,
+        "examples": [
+          2734710014
+        ]
+      },
+      "project_id": {
+        "$id": "http://example.com/example.json/items/properties/project_id",
+        "type": "integer",
+        "title": "The Project_id Schema ",
+        "default": 0,
+        "examples": [
+          2190219853
+        ]
+      },
+      "content": {
+        "$id": "http://example.com/example.json/items/properties/content",
+        "type": "string",
+        "title": "The Content Schema ",
+        "default": "",
+        "examples": [
+          "123456789"
+        ]
+      },
+      "completed": {
+        "$id": "http://example.com/example.json/items/properties/completed",
+        "type": "boolean",
+        "title": "The Completed Schema ",
+        "default": false,
+        "examples": [
+          false
+        ]
+      },
+      "order": {
+        "$id": "http://example.com/example.json/items/properties/order",
+        "type": "integer",
+        "title": "The Order Schema ",
+        "default": 0,
+        "examples": [
+          1
+        ]
+      },
+      "indent": {
+        "$id": "http://example.com/example.json/items/properties/indent",
+        "type": "integer",
+        "title": "The Indent Schema ",
+        "default": 0,
+        "examples": [
+          1
+        ]
+      },
+      "priority": {
+        "$id": "http://example.com/example.json/items/properties/priority",
+        "type": "integer",
+        "title": "The Priority Schema ",
+        "default": 0,
+        "examples": [
+          1
+        ]
+      },
+      "comment_count": {
+        "$id": "http://example.com/example.json/items/properties/comment_count",
+        "type": "integer",
+        "title": "The Comment_count Schema ",
+        "default": 0,
+        "examples": [
+          0
+        ]
+      },
+      "due": {
+        "$id": "http://example.com/example.json/items/properties/due",
+        "type": "object",
+        "properties": {
+          "recurring": {
+            "$id": "http://example.com/example.json/items/properties/due/properties/recurring",
+            "type": "boolean",
+            "title": "The Recurring Schema ",
+            "default": false,
+            "examples": [
+              false
+            ]
+          },
+          "string": {
+            "$id": "http://example.com/example.json/items/properties/due/properties/string",
+            "type": "string",
+            "title": "The String Schema ",
+            "default": "",
+            "examples": [
+              "Jul 18"
+            ]
+          },
+          "date": {
+            "$id": "http://example.com/example.json/items/properties/due/properties/date",
+            "type": "string",
+            "title": "The Date Schema ",
+            "default": "",
+            "examples": [
+              "2018-07-18"
+            ]
+          }
+        }
+      },
+      "url": {
+        "$id": "http://example.com/example.json/items/properties/url",
+        "type": "string",
+        "title": "The Url Schema ",
+        "default": "",
+        "examples": [
+          "https://todoist.com/showTask?id=2734710014"
+        ]
+      }
+    }
+  }
+}

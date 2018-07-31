@@ -1,4 +1,7 @@
-package com.slate.config;
+package com.slate.config.impl;
+
+import com.slate.config.Appium;
+import com.slate.config.User;
 
 import static org.aeonbits.owner.ConfigFactory.create;
 
