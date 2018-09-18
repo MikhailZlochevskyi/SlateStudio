@@ -1,6 +1,40 @@
 ### Task description
 
-https://docs.google.com/document/d/1CoPMJ-vTboUOMPmETUhw1S61tIXuBmNLYwiHBK5109g
+PROBLEM STATEMENT
+Need to create automation tests for mobile application “Todoist”. 
+Todoist allows users to interact and organise tasks with others as well as their own and operates a fast and consistent experience for users.
+
+Useful Links...
+Official website : https://en.todoist.com/
+APK File: http://files.slatestudio.com/sr82
+
+IMPLEMENTATION DETAILS
+Please follow these instructions when designing and delivering your solution:
+   Create test user manually. 
+For test use Android emulator.
+
+
+1. Test “Create Project”
+Steps:
+Create test project via API.
+Login into mobile application.
+Verify on mobile that project is created
+
+2. Test “Create Task via mobile phone”
+Steps:
+Create test task via mobile application in test project.
+API: Verify that task created correctly. 
+
+3. Test “Reopen Task”
+Steps: 
+Open mobile application
+Open test project
+Created test task
+Complete test task.
+Reopen test task via API.
+Mobile: Verify that test task appears in your test project. 
+
+When posting the code to Github, keep in mind we prefer some commits history in the repo vs single commit.
 
 ### Settings
 
